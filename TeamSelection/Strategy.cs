@@ -36,27 +36,6 @@ namespace TeamSelectie
             forwardList.AddRange(teamList.OfType<Forward>());
             goalKeeperList.AddRange(teamList.OfType<Goalkeeper>());
 
-
-            //foreach (Player speler in teamList)
-            //{
-            //    switch (speler.GetType().ToString())
-            //    {
-            //        case "Defender":
-            //            defenderList.Add(speler);
-            //            break;
-            //        case "MidFielder":
-            //            midFielderList.Add(speler);
-            //            break;
-            //        case "Forward":
-            //            forwardList.Add(speler);
-            //            break;
-            //        case "GoalKeeper":
-            //            goalKeeperList.Add(speler);
-            //            break;
-            //        default:
-            //            throw new ArgumentException("Player had the wrong playertype!");
-            //    }
-            //}
         }
 
 
@@ -68,7 +47,7 @@ namespace TeamSelectie
             finishedTeamList.AddRange(defenderList.OrderBy(w => w.Caps).Take(numberOfDefenders));
             finishedTeamList.AddRange(midFielderList.OrderBy(w => w.Caps).Take(numberOfMidFielders));
             finishedTeamList.AddRange(forwardList.OrderBy(w => w.Caps).Take(numberOfForwards));
-           // finishedTeamList.Add(goalKeeperList.OrderBy(w => w.Caps).First());
+            finishedTeamList.Add(goalKeeperList.OrderBy(w => w.Caps).First());
 
             return finishedTeamList;
         }

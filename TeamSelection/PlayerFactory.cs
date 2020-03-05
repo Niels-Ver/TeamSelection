@@ -35,7 +35,7 @@ namespace TeamSelectie
                 case "GoalKeeper": return new Goalkeeper(collectie[0], collectie[1], nummer, posities, rating, caps);
                 case "Defender": return new Defender(collectie[0], collectie[1], nummer, posities, rating, caps);
                 case "Forward": return new Forward(collectie[0], collectie[1], nummer, posities, rating, caps);
-                case "MidFielder": return new Player(collectie[0], collectie[1], nummer, posities, rating, caps);
+                case "MidFielder": return new Midfielder(collectie[0], collectie[1], nummer, posities, rating, caps);
                 default: throw new ArgumentException("Verkeerde Code Jonge!");
             }
         }
