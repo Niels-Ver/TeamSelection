@@ -13,10 +13,11 @@ namespace TeamSelectie
         public int numberOfMidFielders { get; set; }
         public int numberOfForwards { get; set; }
         public List<Player> teamList { get; set; }
+        public Func<Player, int> orderMethod { get; set; }
 
 
 
-        public Strategy(IStrategyBehaviour strategyBehaviour, int numberOfDefenders, int numberOfMidFielders, int numberOfForwards, List<Player> teamList):this(numberOfDefenders, numberOfMidFielders, numberOfForwards, teamList )
+        public Strategy(IStrategyBehaviour strategyBehaviour, int numberOfDefenders, int numberOfMidFielders, int numberOfForwards, List<Player> teamList) :this(numberOfDefenders, numberOfMidFielders, numberOfForwards, teamList)
         {
             this.strategyBehaviour = strategyBehaviour;
         }

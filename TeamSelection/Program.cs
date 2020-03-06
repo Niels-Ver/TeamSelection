@@ -19,13 +19,25 @@ namespace TeamSelectie
 
             //foreach (var f in t.Players)
             //    Console.WriteLine(f);
-            IStrategyBehaviour standard = new StandardStrategy(4, 4, 2, t.Players);
-            IStrategyBehaviour best = new BestSrategy(4, 4, 2, t.Players);
-            IStrategyBehaviour rotation = new RotationStrategy(4, 4, 2, t.Players);
+
+            Func<Player, int> CapsOrderMethod = delegate (Player p)
+            {
+                return p.Caps;
+            };
+
+            Func<Player, int> RatingOrderMethod = delegate (Player p)
+            {
+                return p.Rating;
+            };
+
+
+            IStrategyBehaviour standard = new StandardStrategy(4, 4, 2, t.Players, CapsOrderMethod);
+            IStrategyBehaviour best = new StandardStrategy(4, 4, 2, t.Players, RatingOrderMethod);
+            IStrategyBehaviour rotation = new RotationStrategy(4, 4, 2, t.Players, CapsOrderMethod);
 
 
 
-            Strategy strategy = new Strategy(best, 4, 4, 2, t.Players);
+            Strategy strategy = new Strategy(standard, 4, 4, 2, t.Players);
             List<Player> eindlijst = strategy.Select();
             foreach (Player player in eindlijst)
             {

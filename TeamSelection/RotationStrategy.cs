@@ -7,7 +7,7 @@ namespace TeamSelectie
 {
     public class RotationStrategy : IStrategyBehaviour
     {
-        public RotationStrategy(int numberOfDefenders, int numberOfMidFielders, int numberOfForwards, List<Player> teamList)
+        public RotationStrategy(int numberOfDefenders, int numberOfMidFielders, int numberOfForwards, List<Player> teamList, Func<Player, int> orderMethod)
         {
         }
 

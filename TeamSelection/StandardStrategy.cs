@@ -7,18 +7,20 @@ namespace TeamSelectie
 {
     public class StandardStrategy : IStrategyBehaviour
     {
-        public StandardStrategy(int numberOfDefenders, int numberOfMidFielders, int numberOfForwards, List<Player> teamList)
+        public Func<Player, int> orderMethod { get; set; }
+        public StandardStrategy(int numberOfDefenders, int numberOfMidFielders, int numberOfForwards, List<Player> teamList, Func<Player, int> orderMethod)
         {
+            this.orderMethod = orderMethod;
         }
 
         public List<Player> Select(List<Player> teamList, int numberOfDefenders, int numberOfMidFielders, int numberOfForwards)
         {
             List<Player> finishedTeamList = new List<Player>();
 
-            finishedTeamList.AddRange(teamList.OfType<Defender>().OrderByDescending(w => w.Caps).Take(numberOfDefenders));
-            finishedTeamList.AddRange(teamList.OfType<Midfielder>().OrderByDescending(w => w.Caps).Take(numberOfMidFielders));
-            finishedTeamList.AddRange(teamList.OfType<Forward>().OrderByDescending(w => w.Caps).Take(numberOfForwards));
-            finishedTeamList.Add(teamList.OfType<Goalkeeper>().OrderByDescending(w => w.Caps).First());
+            finishedTeamList.AddRange(teamList.OfType<Defender>().OrderByDescending(orderMethod).Take(numberOfDefenders));
+            finishedTeamList.AddRange(teamList.OfType<Midfielder>().OrderByDescending(orderMethod).Take(numberOfMidFielders));
+            finishedTeamList.AddRange(teamList.OfType<Forward>().OrderByDescending(orderMethod).Take(numberOfForwards));
+            finishedTeamList.Add(teamList.OfType<Goalkeeper>().OrderByDescending(orderMethod).First());
 
             return finishedTeamList;
         }
